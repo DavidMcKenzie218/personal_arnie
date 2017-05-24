@@ -8,6 +8,7 @@ import android.speech.RecognizerIntent;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
 public class Home extends AppCompatActivity{
 
     private Button arniesFace;      //Voice recognition button
+    private TextView output;        //Output for the user
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -25,6 +27,7 @@ public class Home extends AppCompatActivity{
         setContentView(R.layout.home_screen);
         Log.d("Home:", "onCreate called");
         arniesFace = (Button) findViewById(R.id.Arnold);
+        output = (TextView) findViewById(R.id.Output);
         voiceRecognitionCheck();                //Check to see if Voice Recognition is available
     }
 
@@ -42,6 +45,9 @@ public class Home extends AppCompatActivity{
             arniesFace.setEnabled(false);
             //Alert the users
             Toast.makeText(this, "No Voice Recognition Availible on this Device", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            output.setText("Talk to the hand");
         }
     }
 

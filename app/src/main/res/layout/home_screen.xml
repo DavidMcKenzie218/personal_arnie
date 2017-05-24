@@ -10,9 +10,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100sp"/>
 
-    <Button
-        android:layout_width="50sp"
+    <TextView
+        android:id="@+id/Output"
+        android:layout_width="300sp"
         android:layout_height="50sp"
+        android:gravity="center_horizontal"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/Arnold"
         android:layout_marginTop="100sp"/>
