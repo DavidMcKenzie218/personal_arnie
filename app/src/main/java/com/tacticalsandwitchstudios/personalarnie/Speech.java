@@ -21,7 +21,7 @@ public class Speech {
         intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, getClass().getPackage().getName());
 
         //Puts a hint in the text box for the user.
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, output.getText().toString());
+        output.setText("Talk to the hand");
 
         //Tells the speech recogniser how long the phrase is expected to be, free form being short.
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);

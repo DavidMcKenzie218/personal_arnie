@@ -23,6 +23,7 @@ public class Home extends AppCompatActivity{
     private Button arniesFace;      //Voice recognition button
     private TextView output;        //Output for the user
     private Speech speechRecognizer;
+    private Boolean recognizerAvailible =true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -50,9 +51,7 @@ public class Home extends AppCompatActivity{
             arniesFace.setEnabled(false);
             //Alert the users
             Toast.makeText(this, "No Voice Recognition Availible on this Device", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            output.setText("Talk to the hand");
+            recognizerAvailible = false;
         }
     }
 
@@ -60,7 +59,7 @@ public class Home extends AppCompatActivity{
         face.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        speechRecognizer.start(output);
+                        if(recognizerAvailible) speechRecognizer.start(output);
 
                     }
                 }
