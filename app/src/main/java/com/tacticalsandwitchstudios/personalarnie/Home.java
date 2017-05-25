@@ -5,8 +5,10 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.speech.SpeechRecognizer;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +22,7 @@ public class Home extends AppCompatActivity{
 
     private Button arniesFace;      //Voice recognition button
     private TextView output;        //Output for the user
+    private Speech speechRecognizer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -28,7 +31,9 @@ public class Home extends AppCompatActivity{
         Log.d("Home:", "onCreate called");
         arniesFace = (Button) findViewById(R.id.Arnold);
         output = (TextView) findViewById(R.id.Output);
-        voiceRecognitionCheck();                //Check to see if Voice Recognition is available
+        speechRecognizer = new Speech();
+        voiceRecognitionCheck();    //Check to see if Voice Recognition is available
+        talkWithArnie(arniesFace);
     }
 
     public void voiceRecognitionCheck() {
@@ -49,6 +54,17 @@ public class Home extends AppCompatActivity{
         else{
             output.setText("Talk to the hand");
         }
+    }
+
+    public void talkWithArnie(Button face){
+        face.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        speechRecognizer.start(output);
+
+                    }
+                }
+        );
     }
 
 }

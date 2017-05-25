@@ -2,6 +2,7 @@ package com.tacticalsandwitchstudios.personalarnie;
 
 import android.content.Intent;
 import android.speech.RecognizerIntent;
+import android.util.Log;
 import android.widget.TextView;
 
 /**
@@ -10,6 +11,8 @@ import android.widget.TextView;
 public class Speech {
 
     public void start(TextView output){
+
+        Log.d("Speech:", "start is called");
 
         //This is the operation in charge of speech recognition
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
