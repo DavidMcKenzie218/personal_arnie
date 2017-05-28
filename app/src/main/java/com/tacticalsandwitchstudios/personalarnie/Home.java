@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,6 +25,8 @@ public class Home extends AppCompatActivity{
     private TextView output;        //Output for the user
     private Speech speechRecognizer;
     private Boolean recognizerAvailible =true;
+    private Intent speech = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+    private final int REQ_SPEECH_INTENT_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -50,7 +53,7 @@ public class Home extends AppCompatActivity{
             //Deactivate the button
             arniesFace.setEnabled(false);
             //Alert the users
-            Toast.makeText(this, "No Voice Recognition Availible on this Device", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No Voice Recognition Available on this Device", Toast.LENGTH_SHORT).show();
             recognizerAvailible = false;
         }
     }
@@ -59,11 +62,31 @@ public class Home extends AppCompatActivity{
         face.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(recognizerAvailible) speechRecognizer.start(output);
+                        if(recognizerAvailible){
+                            speechRecognizer.start(output);
+                            //starts the voice recognition
+                            startActivityForResult(speech, REQ_SPEECH_INTENT_CODE);
+                        }
+
 
                     }
                 }
         );
+    }
+
+    //This handles the data that is given by the speech recognition
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+
+        //Checks to make sure the code is Ok and is not null
+        if(resultCode == RESULT_OK && data != null){
+            //Places all of the data returned into an array, by converting the results to strings
+            ArrayList <String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            Log.d("Home", result.get(0));
+            //Sets the text in the textbox to the word that the recogniser thinks was said.
+            output.setText(result.get(0));
+        }
     }
 
 }
