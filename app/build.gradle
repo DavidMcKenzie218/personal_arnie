@@ -1,6 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    if (!hasProperty('mainClass')) {
+        ext.mainClass = 'org.tacticalsandwichstudios.Home'
+    }
+
     compileSdkVersion 23
     buildToolsVersion "24.0.2"
 

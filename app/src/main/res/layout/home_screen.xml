@@ -3,12 +3,15 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
+    <ImageButton
         android:id="@+id/Arnold"
-        android:layout_width="200sp"
-        android:layout_height="200sp"
+        android:src="@drawable/arnies_face"
+        android:layout_width="220sp"
+        android:layout_height="330sp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100sp"/>
+        android:layout_marginTop="100sp"
+        android:background="?android:selectableItemBackground"/>
+
 
     <TextView
         android:id="@+id/Output"

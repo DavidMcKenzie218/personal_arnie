@@ -32,11 +32,6 @@ public class responseTest {
 
     @Test
     public void responseListCanAddAResponse(){
-
-    }
-
-    @Test
-    public void responseListCanAddMultipleResponses(){
         testResponses.AddResponses("hello", "soundcloud.com/hello", "greeting");
         ArrayList<Map<String, String>> actual= testResponses.Responses();
         Map<String, String> expected = new HashMap<>();

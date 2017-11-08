@@ -5,11 +5,12 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
-import android.speech.SpeechRecognizer;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +22,7 @@ import java.util.List;
  */
 public class Home extends AppCompatActivity{
 
-    private Button arniesFace;      //Voice recognition button
+    private ImageButton arniesFace;      //Voice recognition button
     private TextView output;        //Output for the user
     private Speech speechRecognizer;
     private Boolean recognizerAvailible =true;
@@ -33,7 +34,7 @@ public class Home extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
         Log.d("Home:", "onCreate called");
-        arniesFace = (Button) findViewById(R.id.Arnold);
+        arniesFace = (ImageButton) findViewById(R.id.Arnold);
         output = (TextView) findViewById(R.id.Output);
         speechRecognizer = new Speech();
         voiceRecognitionCheck();    //Check to see if Voice Recognition is available
@@ -58,7 +59,7 @@ public class Home extends AppCompatActivity{
         }
     }
 
-    public void talkWithArnie(Button face){
+    public void talkWithArnie(ImageButton face){
         face.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
